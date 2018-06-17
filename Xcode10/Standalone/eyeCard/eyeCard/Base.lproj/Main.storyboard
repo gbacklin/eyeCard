@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17E202" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CtJ-zn-vMq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="UrV-fw-hje">
+            <objects>
+                <viewController id="CtJ-zn-vMq" customClass="ViewController" customModule="eyeCard" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4LS-ct-OTX"/>
+                        <viewControllerLayoutGuide type="bottom" id="d1y-sL-HV5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aU7-l6-ogj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="4ov-jn-jiL">
+                                <rect key="frame" x="50" y="167" width="275" height="333.5"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="700" id="4j5-Db-SHR">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="590"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="385" id="TOT-fY-emD"/>
+                                    <constraint firstAttribute="width" constant="536" id="qld-gz-N6n">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="430"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="275" id="sJj-Mm-P0L"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4j5-Db-SHR"/>
+                                        <exclude reference="TOT-fY-emD"/>
+                                        <exclude reference="qld-gz-N6n"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="4j5-Db-SHR"/>
+                                        <exclude reference="TOT-fY-emD"/>
+                                        <include reference="qld-gz-N6n"/>
+                                        <exclude reference="sJj-Mm-P0L"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ccz-03-nHB">
+                                <rect key="frame" x="-4" y="623" width="383" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6C5-Sb-Jrq"/>
+                                    <barButtonItem title="Yes" id="2Bl-xH-5o7">
+                                        <connections>
+                                            <action selector="yes:" destination="CtJ-zn-vMq" id="sAg-OT-Tqa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="4AQ-ko-r3P"/>
+                                    <barButtonItem title="No" id="p53-C0-I1P">
+                                        <connections>
+                                            <action selector="no:" destination="CtJ-zn-vMq" id="QDg-8P-SuL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="61W-Ni-mhT"/>
+                                </items>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-7l-RmM">
+                                <rect key="frame" x="16" y="55" width="343" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ww8-tS-BM4"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="eyeCard">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="30" name="Noteworthy-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ww8-tS-BM4"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is your number on this card ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyj-Wq-BpJ">
+                                <rect key="frame" x="16" y="585" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Ccz-03-nHB" firstAttribute="top" secondItem="vyj-Wq-BpJ" secondAttribute="bottom" constant="7" id="8fM-vL-kxX"/>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="top" secondItem="4LS-ct-OTX" secondAttribute="bottom" constant="32" id="CWC-JW-5Zq"/>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="leading" secondItem="vyj-Wq-BpJ" secondAttribute="leading" id="LC0-xa-00i"/>
+                            <constraint firstItem="4ov-jn-jiL" firstAttribute="top" secondItem="FV6-7l-RmM" secondAttribute="bottom" constant="8" symbolic="YES" id="SDs-Yc-K8w"/>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="trailing" secondItem="vyj-Wq-BpJ" secondAttribute="trailing" id="SXR-5Y-Wkr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vyj-Wq-BpJ" secondAttribute="trailing" id="TSx-mI-YiO"/>
+                            <constraint firstItem="Ccz-03-nHB" firstAttribute="leading" secondItem="aU7-l6-ogj" secondAttribute="leadingMargin" constant="-20" id="UB1-hx-KXJ"/>
+                            <constraint firstItem="d1y-sL-HV5" firstAttribute="top" secondItem="Ccz-03-nHB" secondAttribute="bottom" id="Xoz-Lf-6OU"/>
+                            <constraint firstItem="Ccz-03-nHB" firstAttribute="top" secondItem="vyj-Wq-BpJ" secondAttribute="bottom" constant="17" id="YPG-CZ-UWT"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="vyj-Wq-BpJ" secondAttribute="leading" id="Z68-Cc-2aO"/>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="leading" secondItem="vyj-Wq-BpJ" secondAttribute="leading" id="bOD-eB-Yr9"/>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="top" secondItem="4LS-ct-OTX" secondAttribute="bottom" constant="35" id="j9R-aZ-pbm"/>
+                            <constraint firstItem="4ov-jn-jiL" firstAttribute="centerY" secondItem="aU7-l6-ogj" secondAttribute="centerY" id="lMT-qG-HPJ">
+                                <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                            </constraint>
+                            <constraint firstItem="4ov-jn-jiL" firstAttribute="height" relation="lessThanOrEqual" secondItem="aU7-l6-ogj" secondAttribute="height" multiplier="0.5" id="mcq-XF-Dui"/>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="trailing" secondItem="vyj-Wq-BpJ" secondAttribute="trailing" id="n7J-Nm-brx"/>
+                            <constraint firstItem="4ov-jn-jiL" firstAttribute="centerX" secondItem="aU7-l6-ogj" secondAttribute="centerX" id="nW1-yM-1ww">
+                                <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="FV6-7l-RmM" firstAttribute="centerX" secondItem="4ov-jn-jiL" secondAttribute="centerX" id="s4n-Kn-6Cz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ccz-03-nHB" secondAttribute="trailing" constant="-20" id="v9T-S7-eNp"/>
+                            <constraint firstItem="4ov-jn-jiL" firstAttribute="height" relation="lessThanOrEqual" secondItem="aU7-l6-ogj" secondAttribute="height" multiplier="0.7" id="zpm-R9-SgG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CWC-JW-5Zq"/>
+                                <exclude reference="LC0-xa-00i"/>
+                                <exclude reference="n7J-Nm-brx"/>
+                                <exclude reference="s4n-Kn-6Cz"/>
+                                <exclude reference="SDs-Yc-K8w"/>
+                                <exclude reference="zpm-R9-SgG"/>
+                                <exclude reference="8fM-vL-kxX"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="CWC-JW-5Zq"/>
+                                <include reference="LC0-xa-00i"/>
+                                <include reference="n7J-Nm-brx"/>
+                                <exclude reference="s4n-Kn-6Cz"/>
+                                <include reference="SDs-Yc-K8w"/>
+                                <exclude reference="mcq-XF-Dui"/>
+                                <include reference="zpm-R9-SgG"/>
+                                <include reference="8fM-vL-kxX"/>
+                                <exclude reference="YPG-CZ-UWT"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="17Q-Ik-Gkb" appends="YES" id="mVp-cM-etM"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="4ov-jn-jiL" id="9rg-H5-GWf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGw-gk-sDo" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="17Q-Ik-Gkb">
+                    <connections>
+                        <action selector="restartGame:" destination="CtJ-zn-vMq" id="ijP-uf-h2S"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="303" y="378"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="start" width="500" height="700"/>
+    </resources>
+</document>

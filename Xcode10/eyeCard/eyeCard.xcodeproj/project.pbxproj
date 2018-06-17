@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E17998720D0CB1900647773 /* Cards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E17998520D0CB0C00647773 /* Cards.framework */; };
+		4E17998820D0CB1900647773 /* Cards.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E17998520D0CB0C00647773 /* Cards.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E34560E1BFD55E7004CE7AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E34560D1BFD55E7004CE7AE /* AppDelegate.swift */; };
+		4E3456131BFD55E7004CE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456111BFD55E7004CE7AE /* Main.storyboard */; };
+		4E3456151BFD55E7004CE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456141BFD55E7004CE7AE /* Assets.xcassets */; };
+		4E3456181BFD55E7004CE7AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456161BFD55E7004CE7AE /* LaunchScreen.storyboard */; };
+		4EF3BA9C20D6145800402605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3BA9B20D6145800402605 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4E17998920D0CB1900647773 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4E17998820D0CB1900647773 /* Cards.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4E17998520D0CB0C00647773 /* Cards.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cards.framework; path = ../../Cards/Frameworks/Cards.framework; sourceTree = "<group>"; };
+		4E34560A1BFD55E7004CE7AE /* eyeCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eyeCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E34560D1BFD55E7004CE7AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E3456121BFD55E7004CE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4E3456141BFD55E7004CE7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E3456171BFD55E7004CE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E3456191BFD55E7004CE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EF3BA9B20D6145800402605 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4E3456071BFD55E7004CE7AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E17998720D0CB1900647773 /* Cards.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E3456011BFD55E7004CE7AE = {
+			isa = PBXGroup;
+			children = (
+				4E34560C1BFD55E7004CE7AE /* eyeCard */,
+				4E34560B1BFD55E7004CE7AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4E34560B1BFD55E7004CE7AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E34560A1BFD55E7004CE7AE /* eyeCard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E34560C1BFD55E7004CE7AE /* eyeCard */ = {
+			isa = PBXGroup;
+			children = (
+				4E17998520D0CB0C00647773 /* Cards.framework */,
+				4E34560D1BFD55E7004CE7AE /* AppDelegate.swift */,
+				4EF3BA9920D6145800402605 /* Classes */,
+				4E3456111BFD55E7004CE7AE /* Main.storyboard */,
+				4E3456141BFD55E7004CE7AE /* Assets.xcassets */,
+				4E3456161BFD55E7004CE7AE /* LaunchScreen.storyboard */,
+				4E3456191BFD55E7004CE7AE /* Info.plist */,
+			);
+			path = eyeCard;
+			sourceTree = "<group>";
+		};
+		4EF3BA9920D6145800402605 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4EF3BA9A20D6145800402605 /* ViewControllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4EF3BA9A20D6145800402605 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4EF3BA9B20D6145800402605 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E3456091BFD55E7004CE7AE /* eyeCard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E34561C1BFD55E7004CE7AE /* Build configuration list for PBXNativeTarget "eyeCard" */;
+			buildPhases = (
+				4E3456061BFD55E7004CE7AE /* Sources */,
+				4E3456071BFD55E7004CE7AE /* Frameworks */,
+				4E3456081BFD55E7004CE7AE /* Resources */,
+				4E3456221BFD9456004CE7AE /* Auto Increment Build Number */,
+				4E17998920D0CB1900647773 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = eyeCard;
+			productName = eyeCard;
+			productReference = 4E34560A1BFD55E7004CE7AE /* eyeCard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E3456021BFD55E7004CE7AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Gene Backlin";
+				TargetAttributes = {
+					4E3456091BFD55E7004CE7AE = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 8DT5Y3HP4L;
+						LastSwiftMigration = 1000;
+					};
+				};
+			};
+			buildConfigurationList = 4E3456051BFD55E7004CE7AE /* Build configuration list for PBXProject "eyeCard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4E3456011BFD55E7004CE7AE;
+			productRefGroup = 4E34560B1BFD55E7004CE7AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E3456091BFD55E7004CE7AE /* eyeCard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E3456081BFD55E7004CE7AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E3456181BFD55E7004CE7AE /* LaunchScreen.storyboard in Resources */,
+				4E3456151BFD55E7004CE7AE /* Assets.xcassets in Resources */,
+				4E3456131BFD55E7004CE7AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E3456221BFD9456004CE7AE /* Auto Increment Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Auto Increment Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$((0x$buildNumber))\nbuildNumber=$(($buildNumber + 1))\nbuildNumber=$(printf \"%X\" $buildNumber)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E3456061BFD55E7004CE7AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EF3BA9C20D6145800402605 /* ViewController.swift in Sources */,
+				4E34560E1BFD55E7004CE7AE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4E3456111BFD55E7004CE7AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E3456121BFD55E7004CE7AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4E3456161BFD55E7004CE7AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E3456171BFD55E7004CE7AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4E34561A1BFD55E7004CE7AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gene Backlin (8DT5Y3HP4L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gene Backlin (8DT5Y3HP4L)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "dcb185e4-abde-49d0-bec2-a2eb218e5430";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4E34561B1BFD55E7004CE7AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gene Backlin (8DT5Y3HP4L)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gene Backlin (8DT5Y3HP4L)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "dcb185e4-abde-49d0-bec2-a2eb218e5430";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4E34561D1BFD55E7004CE7AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gene Backlin (8DT5Y3HP4L)";
+				DEVELOPMENT_TEAM = 8DT5Y3HP4L;
+				INFOPLIST_FILE = eyeCard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ezeprod.eyeCard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33cefddb-9ec9-4afb-997b-b5281aff953c";
+				PROVISIONING_PROFILE_SPECIFIER = "eyeCard Dist Prov Profile";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4E34561E1BFD55E7004CE7AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gene Backlin (8DT5Y3HP4L)";
+				DEVELOPMENT_TEAM = 8DT5Y3HP4L;
+				INFOPLIST_FILE = eyeCard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ezeprod.eyeCard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33cefddb-9ec9-4afb-997b-b5281aff953c";
+				PROVISIONING_PROFILE_SPECIFIER = "eyeCard Dist Prov Profile";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E3456051BFD55E7004CE7AE /* Build configuration list for PBXProject "eyeCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E34561A1BFD55E7004CE7AE /* Debug */,
+				4E34561B1BFD55E7004CE7AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E34561C1BFD55E7004CE7AE /* Build configuration list for PBXNativeTarget "eyeCard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E34561D1BFD55E7004CE7AE /* Debug */,
+				4E34561E1BFD55E7004CE7AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4E3456021BFD55E7004CE7AE /* Project object */;
+}
