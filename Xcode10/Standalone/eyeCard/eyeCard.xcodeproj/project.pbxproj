@@ -11,9 +11,9 @@
 		4E3456131BFD55E7004CE7AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456111BFD55E7004CE7AE /* Main.storyboard */; };
 		4E3456151BFD55E7004CE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456141BFD55E7004CE7AE /* Assets.xcassets */; };
 		4E3456181BFD55E7004CE7AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456161BFD55E7004CE7AE /* LaunchScreen.storyboard */; };
-		4E88C62220D609DE008D1712 /* Cards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E88C62020D609CD008D1712 /* Cards.framework */; };
-		4E88C62320D609DE008D1712 /* Cards.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E88C62020D609CD008D1712 /* Cards.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4EF3BA9820D6142400402605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3BA9720D6142400402605 /* ViewController.swift */; };
+		4EF4511320D749B9006A6966 /* Cards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF4511120D749AB006A6966 /* Cards.framework */; };
+		4EF4511420D749B9006A6966 /* Cards.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF4511120D749AB006A6966 /* Cards.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4E88C62320D609DE008D1712 /* Cards.framework in Embed Frameworks */,
+				4EF4511420D749B9006A6966 /* Cards.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,8 +37,8 @@
 		4E3456141BFD55E7004CE7AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E3456171BFD55E7004CE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E3456191BFD55E7004CE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E88C62020D609CD008D1712 /* Cards.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cards.framework; path = "Frameworks/Distribution-Project/Framework-Universal/Cards.framework"; sourceTree = "<group>"; };
 		4EF3BA9720D6142400402605 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EF4511120D749AB006A6966 /* Cards.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cards.framework; path = "Frameworks/Distribution/Frameworks-AppStore/Cards.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E88C62220D609DE008D1712 /* Cards.framework in Frameworks */,
+				4EF4511320D749B9006A6966 /* Cards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +56,7 @@
 		4E3456011BFD55E7004CE7AE = {
 			isa = PBXGroup;
 			children = (
-				4E88C62020D609CD008D1712 /* Cards.framework */,
+				4EF4511120D749AB006A6966 /* Cards.framework */,
 				4E34560C1BFD55E7004CE7AE /* eyeCard */,
 				4E34560B1BFD55E7004CE7AE /* Products */,
 				4EDAB5E620D0D1780032C42C /* Frameworks */,
@@ -340,6 +340,7 @@
 				DEVELOPMENT_TEAM = 8DT5Y3HP4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Distribution/Frameworks-AppStore",
 					"$(PROJECT_DIR)/Frameworks/Distribution-Project/Framework-Universal",
 				);
 				INFOPLIST_FILE = eyeCard/Info.plist;
@@ -362,6 +363,7 @@
 				DEVELOPMENT_TEAM = 8DT5Y3HP4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Distribution/Frameworks-AppStore",
 					"$(PROJECT_DIR)/Frameworks/Distribution-Project/Framework-Universal",
 				);
 				INFOPLIST_FILE = eyeCard/Info.plist;
