@@ -1,0 +1,13 @@
+#In Xcode, the framework search path build setting determines where the linker looks for frameworks at link time. Since your app target attempts to link to RealmSwift.framework (as a result of importing ParentFramework), RealmSwift.framework needs to be available on the framework search path.
+
+#It's important to note that while nested frameworks work in the iOS simulator and even locally on your device, iTunes Connect rejects app bundles that contain nested frameworks. The expected pattern is that all frameworks are embedded directly within the app.
+
+echo "*** Copying the framework ***"
+
+PRODUCT_PATH="${BUILT_PRODUCTS_DIR}/${PROJECT_NAME}.framework"
+
+FRAMEWORK_PATH="${SRCROOT}/Frameworks"
+rm -rf "${FRAMEWORK_PATH}"
+mkdir "${FRAMEWORK_PATH}"
+
+cp -r "${PRODUCT_PATH}" "${FRAMEWORK_PATH}/${PROJECT_NAME}.framework"

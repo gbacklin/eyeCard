@@ -1,0 +1,104 @@
+exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
+
+if test "${PLATFORM_NAME}" = "watchos"; then
+SIMULATOR="watchsimulator"
+else
+SIMULATOR="iphonesimulator"
+fi
+
+UNIVERSAL_OUTPUTFOLDER="${SRCROOT}/Output"
+UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER="${SRCROOT}/Frameworks-Universal"
+APPSTORE_FRAMEWORK_OUTPUT_FOLDER="${SRCROOT}/Distribution/Frameworks-AppStore"
+SIMULATOR_FRAMEWORK_OUTPUT_FOLDER="${SRCROOT}/Frameworks-Simulator"
+
+SIMULATOR_DESTINATION_FOLDER="${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}/Build/Products/${CONFIGURATION}-${SIMULATOR}/${TARGET_NAME}.framework"
+
+DEVICE_BUILD_FRAMEWORK="${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}"
+
+if [ "true" == ${ALREADYINVOKED:-false} ]
+then
+echo "RECURSION: Detected, stopping"
+else
+export ALREADYINVOKED="true"
+
+echo "Initializing..."
+# If remnants from a previous build exist, delete them.
+if [ -d "${UNIVERSAL_OUTPUTFOLDER}" ]; then
+rm -rf "${UNIVERSAL_OUTPUTFOLDER}"
+fi
+mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
+
+if [ -d "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+mkdir -p "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+
+if [ -d "${APPSTORE_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${APPSTORE_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+mkdir -p "${APPSTORE_FRAMEWORK_OUTPUT_FOLDER}"
+
+if [ -d "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+mkdir -p "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+
+echo "Building for the ${SIMULATOR}"
+
+# Build the framework for simulator (using all needed architectures).
+if [ -d "${WORKSPACE_PATH}" ]; then
+xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration "${CONFIGURATION}" only_active_arch=no defines_module=yes -sdk "${SIMULATOR}" -derivedDataPath "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" clean build
+else
+if [ -d "${PROJECT_PATH}" ]; then
+xcodebuild -project "${PROJECT_PATH}" -scheme "${TARGET_NAME}" -configuration "${CONFIGURATION}" only_active_arch=no defines_module=yes -sdk "${SIMULATOR}" -derivedDataPath "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" clean build
+fi
+fi
+
+echo "Building device frameworks..."
+
+echo "Copying device framework..."
+cp -LR "${DEVICE_BUILD_FRAMEWORK}" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+cp -LR "${DEVICE_BUILD_FRAMEWORK}" "${APPSTORE_FRAMEWORK_OUTPUT_FOLDER}"
+
+echo "Combining binaries..."
+
+# Replace the framework executable within the framework with
+# a new version created by merging the device and simulator
+# frameworks' executables with lipo.
+lipo -create -output "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${TARGET_NAME}.framework/${TARGET_NAME}" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${TARGET_NAME}.framework/${TARGET_NAME}" "${SIMULATOR_DESTINATION_FOLDER}/${TARGET_NAME}"
+
+echo "Copying module mappings..."
+
+# Copy the Swift module mappings for the simulator into the
+# framework. The device mappings already exist from step 6.
+cp -r "${SIMULATOR_DESTINATION_FOLDER}/Modules/${TARGET_NAME}.swiftmodule/" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${TARGET_NAME}.framework/Modules/${TARGET_NAME}.swiftmodule"
+
+echo "Copying code signature..."
+
+# Copy the Swift _CodeSignature for the simulator into the
+# framework. The _CodeSignature already exist from step 6.
+cp -r "${SIMULATOR_DESTINATION_FOLDER}/_CodeSignature" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${TARGET_NAME}.framework/_CodeSignature"
+
+# Remove .framework file if exists from previous run.
+echo "Cleaning up..."
+
+if [ -d "${UNIVERSAL_OUTPUTFOLDER}" ]; then
+rm -rf "${UNIVERSAL_OUTPUTFOLDER}"
+fi
+
+if [ -d "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+
+if [ -d "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+
+echo "Framework created in folder ${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+echo ""
+echo "*** DONE ***"
+
+open “/tmp/${PROJECT_NAME}_archive.log”
+
+# ALREADYINVOKED if control end
+fi

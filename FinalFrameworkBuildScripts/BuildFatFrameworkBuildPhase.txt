@@ -1,0 +1,119 @@
+set -e
+exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
+
+if test "${PLATFORM_NAME}" = "watchsimulator" || test "${PLATFORM_NAME}" = "iphonesimulator"
+then
+echo "*** ERROR *** set active scheme for the device not the simulator"
+open /tmp/${PROJECT_NAME}_archive.log
+exit 1
+else
+echo "Begining framework creation for ${PLATFORM_NAME}..."
+
+if test "${PLATFORM_NAME}" = "watchos"; then
+DEVICE="watchos"
+SIMULATOR="watchsimulator"
+else
+DEVICE="iphoneos"
+SIMULATOR="iphonesimulator"
+fi
+
+UNIVERSAL_OUTPUTFOLDER="${SRCROOT}/Output"
+UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER="${SRCROOT}/Distribution-Project/Framework-Universal"
+DEVICE_FRAMEWORK_OUTPUT_FOLDER="${SRCROOT}/Framework-Device"
+SIMULATOR_FRAMEWORK_OUTPUT_FOLDER="${SRCROOT}/Framework-Simulator"
+
+SIMULATOR_DESTINATION_FOLDER="${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}/Build/Products/${CONFIGURATION}-${SIMULATOR}/${PROJECT}.framework"
+
+DEVICE_BUILD_FRAMEWORK="${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}"
+
+if [ "true" == ${ALREADYINVOKED:-false} ]
+then
+echo "RECURSION: Detected, stopping"
+else
+export ALREADYINVOKED="true"
+
+echo "Cleaning work area..."
+# If remnants from a previous build exist, delete them.
+if [ -d "${UNIVERSAL_OUTPUTFOLDER}" ]; then
+rm -rf "${UNIVERSAL_OUTPUTFOLDER}"
+fi
+mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
+
+if [ -d "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+mkdir -p "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+
+if [ -d "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+mkdir -p "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}"
+
+if [ -d "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+mkdir -p "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+
+echo "Starting ${CONFIGURATION} build for ${PROJECT}..."
+
+echo "Building schema ${PROJECT} for the ${SIMULATOR} output ${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+echo "Building schema ${PROJECT} for the ${DEVICE} output ${DEVICE_FRAMEWORK_OUTPUT_FOLDER}"
+
+# Build the framework for simulator (using all needed architectures).
+if [ -d "${PROJECT}.workspace" ]; then
+xcodebuild -workspace "${PROJECT}.workspace" -scheme "${PROJECT}" -configuration "${CONFIGURATION}" only_active_arch=no defines_module=yes -sdk "${DEVICE}" -derivedDataPath "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}" clean build
+xcodebuild -workspace "${PROJECT}.workspace" -scheme "${PROJECT}" -configuration "${CONFIGURATION}" only_active_arch=no defines_module=yes -sdk "${SIMULATOR}" -derivedDataPath "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" clean build
+else
+if [ -d "${PROJECT}.xcodeproj" ]; then
+xcodebuild -project "${PROJECT}.xcodeproj" -scheme "${PROJECT}" -configuration "${CONFIGURATION}" only_active_arch=no defines_module=yes -sdk "${DEVICE}" -derivedDataPath "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}" clean build
+xcodebuild -project "${PROJECT}.xcodeproj" -scheme "${PROJECT}" -configuration "${CONFIGURATION}" only_active_arch=no defines_module=yes -sdk "${SIMULATOR}" -derivedDataPath "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" clean build
+fi
+fi
+
+echo "Copying device framework from ${DEVICE_FRAMEWORK_OUTPUT_FOLDER}/Build/Products/${CONFIGURATION}-${DEVICE}/${PROJECT}.framework to ${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+cp -r "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}/Build/Products/${CONFIGURATION}-${DEVICE}/${PROJECT}.framework" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+
+echo "Combining binaries..."
+
+# Replace the framework executable within the framework with
+# a new version created by merging the device and simulator
+# frameworks' executables with lipo.
+lipo -create -output "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${PROJECT}.framework/${PROJECT}" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${PROJECT}.framework/${PROJECT}" "${SIMULATOR_DESTINATION_FOLDER}/${PROJECT}"
+
+echo "Copying module mappings..."
+
+# Copy the Swift module mappings for the simulator into the
+# framework. The device mappings already exist from step 6.
+cp -r "${SIMULATOR_DESTINATION_FOLDER}/Modules/${PROJECT}.swiftmodule/" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${PROJECT}.framework/Modules/${PROJECT}.swiftmodule"
+
+echo "Copying code signature..."
+
+# Copy the Swift _CodeSignature for the simulator into the
+# framework. The _CodeSignature already exist from step 6.
+cp -r "${SIMULATOR_DESTINATION_FOLDER}/_CodeSignature" "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}/${PROJECT}.framework/_CodeSignature"
+
+# Remove .framework file if exists from previous run.
+echo "Cleaning up..."
+
+if [ -d "${UNIVERSAL_OUTPUTFOLDER}" ]; then
+rm -rf "${UNIVERSAL_OUTPUTFOLDER}"
+fi
+
+if [ -d "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${DEVICE_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+
+if [ -d "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}" ]; then
+rm -rf "${SIMULATOR_FRAMEWORK_OUTPUT_FOLDER}"
+fi
+
+echo "Framework created in folder ${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+echo ""
+echo "*** DONE ***"
+
+# Convenience to open the framework output folder
+open "${UNIVERSAL_FRAMEWORK_OUTPUT_FOLDER}"
+
+# ALREADYINVOKED if control end
+fi
+fi
