@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     
     var gameBeingPlayed: Bool = false
     
-    //let images = ["0", "1", "2", "3", "4", "5"]
     let images = Cards.cardImageNames()
     let values = Cards.cardValues()
     var imageView1: UIImageView!
