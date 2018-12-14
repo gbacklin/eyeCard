@@ -14,6 +14,8 @@
 		4E3456151BFD55E7004CE7AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456141BFD55E7004CE7AE /* Assets.xcassets */; };
 		4E3456181BFD55E7004CE7AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3456161BFD55E7004CE7AE /* LaunchScreen.storyboard */; };
 		4EF3BA9C20D6145800402605 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3BA9B20D6145800402605 /* ViewController.swift */; };
+		4EF7D81121C34D2400C1AF89 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7D81021C34D2400C1AF89 /* SettingsBundleHelper.swift */; };
+		4EF7D81321C34D6500C1AF89 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EF7D81221C34D6500C1AF89 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +41,8 @@
 		4E3456171BFD55E7004CE7AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E3456191BFD55E7004CE7AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EF3BA9B20D6145800402605 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EF7D81021C34D2400C1AF89 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
+		4EF7D81221C34D6500C1AF89 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				4E3456141BFD55E7004CE7AE /* Assets.xcassets */,
 				4E3456161BFD55E7004CE7AE /* LaunchScreen.storyboard */,
 				4E3456191BFD55E7004CE7AE /* Info.plist */,
+				4EF7D81221C34D6500C1AF89 /* Settings.bundle */,
 			);
 			path = eyeCard;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 		4EF3BA9920D6145800402605 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4EF7D80F21C34D2400C1AF89 /* Utility */,
 				4EF3BA9A20D6145800402605 /* ViewControllers */,
 			);
 			path = Classes;
@@ -97,6 +103,14 @@
 				4EF3BA9B20D6145800402605 /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4EF7D80F21C34D2400C1AF89 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4EF7D81021C34D2400C1AF89 /* SettingsBundleHelper.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF7D81321C34D6500C1AF89 /* Settings.bundle in Resources */,
 				4E3456181BFD55E7004CE7AE /* LaunchScreen.storyboard in Resources */,
 				4E3456151BFD55E7004CE7AE /* Assets.xcassets in Resources */,
 				4E3456131BFD55E7004CE7AE /* Main.storyboard in Resources */,
@@ -182,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$((0x$buildNumber))\nbuildNumber=$(($buildNumber + 1))\nbuildNumber=$(printf \"%X\" $buildNumber)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -192,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF3BA9C20D6145800402605 /* ViewController.swift in Sources */,
+				4EF7D81121C34D2400C1AF89 /* SettingsBundleHelper.swift in Sources */,
 				4E34560E1BFD55E7004CE7AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
